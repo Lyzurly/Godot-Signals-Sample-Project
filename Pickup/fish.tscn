@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpiovdx3uns0s"]
+[gd_scene format=3 uid="uid://dpiovdx3uns0s"]
 
 [ext_resource type="Script" uid="uid://dm1m458ofsj3g" path="res://Pickup/fish.gd" id="1_311ok"]
 [ext_resource type="Texture2D" uid="uid://bnwbhk57ntivh" path="res://Pickup/fish.png" id="1_p62y3"]
@@ -7,16 +7,18 @@
 radius = 20.0
 height = 96.0
 
-[node name="RigidBody2D" type="RigidBody2D"]
+[node name="RigidBody2D" type="RigidBody2D" unique_id=432973288]
+collision_layer = 0
+collision_mask = 3
 can_sleep = false
 max_contacts_reported = 100
 script = ExtResource("1_311ok")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1087381150]
 rotation = -1.57079
 shape = SubResource("CapsuleShape2D_p62y3")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=158880388]
 offset_left = -128.0
 offset_top = -120.0
 offset_right = 384.0

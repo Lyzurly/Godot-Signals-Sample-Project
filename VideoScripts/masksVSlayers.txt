@@ -1,0 +1,4 @@
+You just started making a game in Godot
+AAAAND you need things to physically collide with each other
+The way to do it is with layers and masks
+But what IS the difference between a layer and a mask?

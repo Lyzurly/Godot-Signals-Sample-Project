@@ -1,12 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://cjemrauyik1y2"]
+[gd_scene format=3 uid="uid://cjemrauyik1y2"]
 
 [ext_resource type="Script" uid="uid://drv4o2r1ymydj" path="res://Player/player.gd" id="1_2c62f"]
 [ext_resource type="Texture2D" uid="uid://cgb8nbduvujaf" path="res://Player/cat.png" id="2_gyfs4"]
 [ext_resource type="Script" uid="uid://b14c0oh15hq8o" path="res://ui.gd" id="3_hq1ik"]
+[ext_resource type="Theme" uid="uid://dj4lcwuqbp0co" path="res://UI/ui.tres" id="4_d5x1h"]
 
 [sub_resource type="Gradient" id="Gradient_d5x1h"]
-offsets = PackedFloat32Array(0, 0.32906, 0.551282, 0.850649)
-colors = PackedColorArray(0.41, 0.941, 1, 1, 0, 0.693, 0.99, 1, 0.27451, 0.54902, 0, 1, 0.27451, 0.54902, 0, 1)
+offsets = PackedFloat32Array(0.336, 0.446, 0.532, 0.738, 0.850649)
+colors = PackedColorArray(0.41, 0.941, 1, 1, 0, 0.693, 0.99, 1, 0.22080001, 0.48882657, 0.92, 1, 0.27451, 0.54902, 0, 1, 0.27451, 0.54902, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_8mm7a"]
 gradient = SubResource("Gradient_d5x1h")
@@ -16,8 +17,8 @@ metadata/_snap_count = 12
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hq1ik"]
 
 [sub_resource type="Gradient" id="Gradient_nfk4m"]
-offsets = PackedFloat32Array(0, 0.140969, 0.281938, 0.881057)
-colors = PackedColorArray(0.286275, 0.639216, 0, 1, 0.081, 0.27, 0, 1, 0.407843, 0.176471, 0.0352941, 1, 0.6, 0.3403, 0.282, 1)
+offsets = PackedFloat32Array(0, 0.140969, 0.256, 0.372)
+colors = PackedColorArray(0.2767501, 0.82, 0.205, 1, 0.081, 0.27, 0, 1, 0.42, 0.19466998, 0.054599997, 1, 0.6, 0.3403, 0.282, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_66tet"]
 gradient = SubResource("Gradient_nfk4m")
@@ -54,49 +55,54 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="FontVariation" id="FontVariation_d5x1h"]
+spacing_glyph = 3
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Node2D" type="Node2D" unique_id=1339571838]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=153925257]
 position = Vector2(324, 576)
 
-[node name="TextureRect_Sky" type="TextureRect" parent="."]
+[node name="TextureRect_Sky" type="TextureRect" parent="." unique_id=38558343]
 offset_right = 648.0
 offset_bottom = 1152.0
 texture = SubResource("GradientTexture2D_8mm7a")
 
-[node name="StaticBody2D_Ground" type="StaticBody2D" parent="."]
+[node name="StaticBody2D_Ground" type="StaticBody2D" parent="." unique_id=25317394]
+position = Vector2(0, 144)
 collision_mask = 0
 
-[node name="CollisionShape2D_Ground" type="CollisionShape2D" parent="StaticBody2D_Ground"]
-position = Vector2(320, 520)
+[node name="Collision_Ground" type="CollisionShape2D" parent="StaticBody2D_Ground" unique_id=2144690586]
+position = Vector2(324, 592)
 shape = SubResource("WorldBoundaryShape2D_hq1ik")
 
-[node name="CollisionShape2D_Wall_L" type="CollisionShape2D" parent="StaticBody2D_Ground"]
+[node name="Collision_L" type="CollisionShape2D" parent="StaticBody2D_Ground" unique_id=728122356]
 position = Vector2(0, 416)
 rotation = 1.57079
 shape = SubResource("WorldBoundaryShape2D_hq1ik")
 
-[node name="CollisionShape2D_Wall_R" type="CollisionShape2D" parent="StaticBody2D_Ground"]
+[node name="Collision_R" type="CollisionShape2D" parent="StaticBody2D_Ground" unique_id=335200434]
 position = Vector2(648, 416)
 rotation = -1.57079
 shape = SubResource("WorldBoundaryShape2D_hq1ik")
 
-[node name="TextureRect_Ground" type="TextureRect" parent="StaticBody2D_Ground"]
-offset_top = 504.0
+[node name="TextureRect_Ground" type="TextureRect" parent="StaticBody2D_Ground" unique_id=1993236693]
+offset_top = 568.0
 offset_right = 648.0
-offset_bottom = 1152.0
+offset_bottom = 1216.0
 texture = SubResource("GradientTexture2D_66tet")
 
-[node name="CharacterBody2D_Cat" type="CharacterBody2D" parent="."]
-position = Vector2(288, 440)
+[node name="CharacterBody2D_Cat" type="CharacterBody2D" parent="." unique_id=344641784]
+position = Vector2(344, 584)
+collision_layer = 2
 script = ExtResource("1_2c62f")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D_Cat"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D_Cat" unique_id=757140891]
 position = Vector2(-4, -4)
 rotation = -1.57079
 shape = SubResource("CapsuleShape2D_d5x1h")
 
-[node name="TextureRect_Sprite" type="TextureRect" parent="CharacterBody2D_Cat"]
+[node name="TextureRect_Sprite" type="TextureRect" parent="CharacterBody2D_Cat" unique_id=762449964]
 unique_name_in_owner = true
 anchors_preset = 8
 anchor_left = 0.5
@@ -114,10 +120,11 @@ pivot_offset = Vector2(128, 128)
 texture = ExtResource("2_gyfs4")
 expand_mode = 1
 
-[node name="CanvasLayer_UI" type="CanvasLayer" parent="."]
+[node name="CanvasLayer_UI" type="CanvasLayer" parent="." unique_id=2025554945]
 script = ExtResource("3_hq1ik")
 
-[node name="MarginContainer_Top" type="MarginContainer" parent="CanvasLayer_UI"]
+[node name="MarginContainer_Top" type="MarginContainer" parent="CanvasLayer_UI" unique_id=2000246566]
+visible = false
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 112.0
@@ -126,20 +133,20 @@ theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 35
 theme_override_constants/margin_right = 20
 
-[node name="HSplitContainer" type="HSplitContainer" parent="CanvasLayer_UI/MarginContainer_Top"]
+[node name="HSplitContainer" type="HSplitContainer" parent="CanvasLayer_UI/MarginContainer_Top" unique_id=1506283794]
 layout_mode = 2
 
-[node name="PanelContainer_Health" type="PanelContainer" parent="CanvasLayer_UI/MarginContainer_Top/HSplitContainer"]
+[node name="PanelContainer_Health" type="PanelContainer" parent="CanvasLayer_UI/MarginContainer_Top/HSplitContainer" unique_id=463163342]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_2c62f")
 
-[node name="VBox_Lives" type="VBoxContainer" parent="CanvasLayer_UI/MarginContainer_Top/HSplitContainer/PanelContainer_Health"]
+[node name="VBox_Lives" type="VBoxContainer" parent="CanvasLayer_UI/MarginContainer_Top/HSplitContainer/PanelContainer_Health" unique_id=1684362984]
 layout_mode = 2
 theme_override_constants/separation = -22
 alignment = 1
 
-[node name="Label_Lives" type="Label" parent="CanvasLayer_UI/MarginContainer_Top/HSplitContainer/PanelContainer_Health/VBox_Lives"]
+[node name="Label_Lives" type="Label" parent="CanvasLayer_UI/MarginContainer_Top/HSplitContainer/PanelContainer_Health/VBox_Lives" unique_id=2120751758]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.231373, 0.396078, 1)
 theme_override_colors/font_outline_color = Color(0, 0.231373, 0.396078, 1)
@@ -148,7 +155,7 @@ theme_override_font_sizes/font_size = 67
 text = "  LIVES  "
 horizontal_alignment = 1
 
-[node name="Label_Lives_Val" type="Label" parent="CanvasLayer_UI/MarginContainer_Top/HSplitContainer/PanelContainer_Health/VBox_Lives"]
+[node name="Label_Lives_Val" type="Label" parent="CanvasLayer_UI/MarginContainer_Top/HSplitContainer/PanelContainer_Health/VBox_Lives" unique_id=147023329]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.231373, 0.396078, 1)
@@ -157,17 +164,17 @@ theme_override_font_sizes/font_size = 121
 text = "9"
 horizontal_alignment = 1
 
-[node name="PanelContainer_Strength" type="PanelContainer" parent="CanvasLayer_UI/MarginContainer_Top/HSplitContainer"]
+[node name="PanelContainer_Strength" type="PanelContainer" parent="CanvasLayer_UI/MarginContainer_Top/HSplitContainer" unique_id=1789384794]
 visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_gyfs4")
 
-[node name="VBox_Strength" type="VBoxContainer" parent="CanvasLayer_UI/MarginContainer_Top/HSplitContainer/PanelContainer_Strength"]
+[node name="VBox_Strength" type="VBoxContainer" parent="CanvasLayer_UI/MarginContainer_Top/HSplitContainer/PanelContainer_Strength" unique_id=42511681]
 layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="Label_Strength" type="Label" parent="CanvasLayer_UI/MarginContainer_Top/HSplitContainer/PanelContainer_Strength/VBox_Strength"]
+[node name="Label_Strength" type="Label" parent="CanvasLayer_UI/MarginContainer_Top/HSplitContainer/PanelContainer_Strength/VBox_Strength" unique_id=1848272350]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0.41, 0.0533, 0.041, 1)
 theme_override_constants/outline_size = 31
@@ -175,7 +182,7 @@ theme_override_font_sizes/font_size = 56
 text = "Strength"
 horizontal_alignment = 1
 
-[node name="Label_Strength_Val" type="Label" parent="CanvasLayer_UI/MarginContainer_Top/HSplitContainer/PanelContainer_Strength/VBox_Strength"]
+[node name="Label_Strength_Val" type="Label" parent="CanvasLayer_UI/MarginContainer_Top/HSplitContainer/PanelContainer_Strength/VBox_Strength" unique_id=1450810352]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0.41, 0.0533, 0.041, 1)
@@ -184,7 +191,7 @@ theme_override_font_sizes/font_size = 56
 text = "1"
 horizontal_alignment = 1
 
-[node name="MarginContainer_Bottom" type="MarginContainer" parent="CanvasLayer_UI"]
+[node name="MarginContainer_Bottom" type="MarginContainer" parent="CanvasLayer_UI" unique_id=623295710]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -196,8 +203,28 @@ theme_override_constants/margin_left = 40
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 425
 
-[node name="HSplit" type="HSplitContainer" parent="CanvasLayer_UI/MarginContainer_Bottom"]
+[node name="HSplit" type="HSplitContainer" parent="CanvasLayer_UI/MarginContainer_Bottom" unique_id=746484752]
 layout_mode = 2
 theme_override_constants/separation = 30
-split_offset = 285
+split_offsets = PackedInt32Array(285)
 dragging_enabled = false
+split_offset = 285
+
+[node name="Button" type="Button" parent="CanvasLayer_UI" unique_id=144751637]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -274.0
+offset_top = 128.0
+offset_right = -112.0
+offset_bottom = 203.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_d5x1h")
+theme_override_fonts/font = SubResource("FontVariation_d5x1h")
+theme_override_font_sizes/font_size = 50
+text = "FISH"
