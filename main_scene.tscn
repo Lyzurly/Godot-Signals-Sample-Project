@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://cjemrauyik1y2"]
+[gd_scene load_steps=14 format=3 uid="uid://cjemrauyik1y2"]
 
 [ext_resource type="Script" uid="uid://drv4o2r1ymydj" path="res://Player/player.gd" id="1_2c62f"]
 [ext_resource type="Texture2D" uid="uid://cgb8nbduvujaf" path="res://Player/cat.png" id="2_gyfs4"]
 [ext_resource type="Script" uid="uid://b14c0oh15hq8o" path="res://ui.gd" id="3_hq1ik"]
+[ext_resource type="Theme" uid="uid://dj4lcwuqbp0co" path="res://UI/ui.tres" id="4_d5x1h"]
 
 [sub_resource type="Gradient" id="Gradient_d5x1h"]
 offsets = PackedFloat32Array(0, 0.32906, 0.551282, 0.850649)
@@ -24,8 +25,8 @@ gradient = SubResource("Gradient_nfk4m")
 fill_to = Vector2(0, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d5x1h"]
-radius = 84.0
-height = 184.0
+radius = 86.0
+height = 186.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2c62f"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -114,6 +115,13 @@ pivot_offset = Vector2(128, 128)
 texture = ExtResource("2_gyfs4")
 expand_mode = 1
 
+[node name="Area2D" type="Area2D" parent="CharacterBody2D_Cat"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CharacterBody2D_Cat/Area2D"]
+position = Vector2(-4, -4)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_d5x1h")
+
 [node name="CanvasLayer_UI" type="CanvasLayer" parent="."]
 script = ExtResource("3_hq1ik")
 
@@ -201,3 +209,10 @@ layout_mode = 2
 theme_override_constants/separation = 30
 split_offset = 285
 dragging_enabled = false
+
+[node name="Button" type="Button" parent="CanvasLayer_UI/MarginContainer_Bottom/HSplit"]
+layout_mode = 2
+theme = ExtResource("4_d5x1h")
+text = "ENEMY"
+
+[connection signal="pressed" from="CanvasLayer_UI/MarginContainer_Bottom/HSplit/Button" to="CanvasLayer_UI" method="_on_button_pressed"]
